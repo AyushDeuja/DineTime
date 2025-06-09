@@ -12,7 +12,7 @@ export default function Index() {
       }}
     >
       <Text>Edit app/index.jsx to edit this screen.</Text>
-      <TouchableOpacity onPress={() => router.push("/testing")}>
+      <TouchableOpacity onPress={() => router.push("/home")}>
         <Text className="text-xl">Change route</Text>
       </TouchableOpacity>
     </View>
