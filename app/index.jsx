@@ -9,13 +9,13 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import logo from "../assets/images/dinetimelogo.png";
+import entryImage from "../assets/images/Frame.png";
 // const logo = require("../assets/images/dinetimelogo.jpg");
 
 export default function Index() {
   const router = useRouter();
   return (
     <SafeAreaView className={`bg-secondary`}>
-      <StatusBar barStyle={"light-content"} className="bg-secondary" />
       <ScrollView contentContainerStyle={{ height: "100%" }}>
         <View className="m-2 flex justify-center items-center">
           <Image source={logo} style={{ width: "300", height: "300" }} />
@@ -51,6 +51,14 @@ export default function Index() {
             </TouchableOpacity>
           </View>
         </View>
+        <View className="flex-1">
+          <Image
+            source={entryImage}
+            className="w-full h-full"
+            resizeMode="contain"
+          />
+        </View>
+        <StatusBar barStyle={"light-content"} className="bg-secondary" />
       </ScrollView>
     </SafeAreaView>
   );
