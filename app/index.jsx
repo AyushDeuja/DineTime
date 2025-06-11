@@ -28,11 +28,20 @@ export default function Index() {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => router.push("/home")}
-              className="p-2 my-2 text-black rounded-lg bg-primary"
+              className="p-2 my-2 text-black rounded-lg bg-secondary border border-primary max-w-fit"
             >
-              <Text className="text-lg font-semibold text-center">
+              <Text className="text-lg font-semibold text-primary text-center">
                 Guest User
               </Text>
+            </TouchableOpacity>
+          </View>
+          <View>
+            <Text className="text-center text-lg font-semibold my-4 text-white">
+              <View className="border-b-2 p-2 mb-1 w-24 border-primary" /> or{" "}
+              <View className="border-b-2 p-2 mb-1 w-24 border-primary" />
+            </Text>
+            <TouchableOpacity>
+              <Text></Text>
             </TouchableOpacity>
           </View>
         </View>
