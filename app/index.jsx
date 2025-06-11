@@ -20,9 +20,18 @@ export default function Index() {
         <View className="m-2 flex justify-center items-center">
           <Image source={logo} style={{ width: "300", height: "300" }} />
           <View className="w-3/4">
-            <TouchableOpacity className="p-2 my-2 text-black rounded-lg bg-primary">
-              <Text className="text-base font-semibold text-center">
-                Sign Up
+            <TouchableOpacity
+              onPress={() => router.push("/signup")}
+              className="p-2 my-2 text-black rounded-lg bg-primary"
+            >
+              <Text className="text-lg font-semibold text-center">Sign Up</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => router.push("/home")}
+              className="p-2 my-2 text-black rounded-lg bg-primary"
+            >
+              <Text className="text-lg font-semibold text-center">
+                Guest User
               </Text>
             </TouchableOpacity>
           </View>
