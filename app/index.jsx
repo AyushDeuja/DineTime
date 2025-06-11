@@ -40,8 +40,14 @@ export default function Index() {
               <View className="border-b-2 p-2 mb-1 w-24 border-primary" /> or{" "}
               <View className="border-b-2 p-2 mb-1 w-24 border-primary" />
             </Text>
-            <TouchableOpacity>
-              <Text></Text>
+            <TouchableOpacity
+              onPress={() => router.push("/signin")}
+              className="flex items-center flex-row justify-center"
+            >
+              <Text className="font-semibold text-white">Already a User? </Text>
+              <Text className="font-semibold text-base underline text-primary">
+                Sign In
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
