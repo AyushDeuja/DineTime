@@ -1,8 +1,10 @@
+import { Formik } from "formik";
 import {
   Image,
   ScrollView,
   StatusBar,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -11,6 +13,8 @@ import logo from "../../assets/images/dinetimelogo.png";
 import entryImage from "../../assets/images/Frame.png";
 
 const Signup = () => {
+  const handleSignup = () => {};
+
   return (
     <SafeAreaView className={`bg-secondary`}>
       <ScrollView contentContainerStyle={{ height: "100%" }}>
@@ -19,37 +23,30 @@ const Signup = () => {
           <Text className="font-bold text-center text-lg text-white mb-10">
             Let's get you started
           </Text>
-          <View className="w-3/4">
-            <TouchableOpacity
-              onPress={() => router.push("/signup")}
-              className="p-2 my-2 text-black rounded-lg bg-primary"
-            >
-              <Text className="text-lg font-semibold text-center">Sign Up</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => router.push("/home")}
-              className="p-2 my-2 text-black rounded-lg bg-secondary border border-primary max-w-fit"
-            >
-              <Text className="text-lg font-semibold text-primary text-center">
-                Guest User
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View>
-            <Text className="text-center text-lg font-semibold my-4 text-white">
-              <View className="border-b-2 p-2 mb-1 w-24 border-primary" /> or{" "}
-              <View className="border-b-2 p-2 mb-1 w-24 border-primary" />
-            </Text>
-            <View className="flex flex-row justify-center items-center">
-              <Text className="font-semibold text-white">Already a User? </Text>
-              <TouchableOpacity onPress={() => router.push("/signin")}>
-                <Text className="font-semibold text-base underline text-primary">
-                  Sign In
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
         </View>
+
+        <View className="w-5/6">
+          <Formik
+            initialValues={{ email: "", password: "" }}
+            validationSchema={""}
+            onSubmit={handleSignup}
+          >
+            {({
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              values,
+              errors,
+              touched,
+            }) => (
+              <View className="w-full">
+                <Text>Email</Text>
+                <TextInput onChangeText={handleChange("email")} />
+              </View>
+            )}
+          </Formik>
+        </View>
+
         <View className="flex-1">
           <Image
             source={entryImage}
@@ -57,6 +54,12 @@ const Signup = () => {
             resizeMode="contain"
           />
         </View>
+        <TouchableOpacity
+          onPress={() => router.push("/signup")}
+          className="p-2 my-2 text-black rounded-lg bg-primary"
+        >
+          <Text className="text-lg font-semibold text-center">Sign Up</Text>
+        </TouchableOpacity>
         <StatusBar barStyle={"light-content"} className="bg-secondary" />
       </ScrollView>
     </SafeAreaView>
