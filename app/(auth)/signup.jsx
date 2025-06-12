@@ -54,6 +54,20 @@ const Signup = () => {
                     {errors.email}
                   </Text>
                 )}
+                <Text>Password</Text>
+                <TextInput
+                  className="h-10 border border-white text-white rounded px-2"
+                  onChangeText={handleChange("password")}
+                  onBlur={handleBlur("password")}
+                  value={values.password}
+                  secureTextEntry
+                />
+
+                {touched.password && errors.password && (
+                  <Text className="text-red-500 text-xs mb-2">
+                    {errors.password}
+                  </Text>
+                )}
               </View>
             )}
           </Formik>
