@@ -19,8 +19,8 @@ const Signup = () => {
     <SafeAreaView className={`bg-secondary`}>
       <ScrollView contentContainerStyle={{ height: "100%" }}>
         <View className="m-2 flex justify-center items-center">
-          <Image source={logo} style={{ width: "300", height: "300" }} />
-          <Text className="font-bold text-center text-lg text-white mb-10">
+          <Image source={logo} style={{ width: "200", height: "100" }} />
+          <Text className="font-bold text-center text-lg text-white mb-5">
             Let's get you started
           </Text>
 
@@ -39,9 +39,9 @@ const Signup = () => {
                 touched,
               }) => (
                 <View className="w-full">
-                  <Text>Email</Text>
+                  <Text className="text-primary mt-4 mb-2">Email</Text>
                   <TextInput
-                    className="h-10 border border-white text-white rounded px-2"
+                    className="h-12 border border-white text-white rounded px-2"
                     onChangeText={handleChange("email")}
                     onBlur={handleBlur("email")}
                     value={values.email}
@@ -54,9 +54,9 @@ const Signup = () => {
                     </Text>
                   )}
 
-                  <Text>Password</Text>
+                  <Text className="text-primary mt-4 mb-2">Password</Text>
                   <TextInput
-                    className="h-10 border border-white text-white rounded px-2"
+                    className="h-12 border border-white text-white rounded px-2"
                     onChangeText={handleChange("password")}
                     onBlur={handleBlur("password")}
                     value={values.password}
@@ -71,7 +71,7 @@ const Signup = () => {
 
                   <TouchableOpacity
                     onPress={handleSubmit}
-                    className="p-2 my-2 text-black rounded-lg bg-primary"
+                    className="p-2 my-4 text-black rounded-lg bg-primary"
                   >
                     <Text className="text-lg font-semibold text-center">
                       Sign Up
