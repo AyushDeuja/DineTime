@@ -92,13 +92,14 @@ const Signup = () => {
                 </Text>
               </TouchableOpacity>
             </View>
+
             <Text className="text-center text-lg font-semibold my-4 text-white">
               <View className="border-b-2 p-2 mb-1 w-24 border-primary" /> or{" "}
               <View className="border-b-2 p-2 mb-1 w-24 border-primary" />
             </Text>
             <View className="flex flex-row justify-center items-center ">
               <Text className="font-semibold text-white">Be a </Text>
-              <TouchableOpacity onPress={() => router.push("/signin")}>
+              <TouchableOpacity onPress={() => router.push("/home")}>
                 <Text className="font-semibold text-base underline text-primary ">
                   {" "}
                   Guest User
