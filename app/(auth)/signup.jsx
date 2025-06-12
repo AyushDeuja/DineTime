@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import { Formik } from "formik";
 import {
   Image,
@@ -11,8 +12,10 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import logo from "../../assets/images/dinetimelogo.png";
 import entryImage from "../../assets/images/Frame.png";
+import validationSchema from "../../utils/signupSchema";
 
 const Signup = () => {
+  const router = useRouter();
   const handleSignup = () => {};
 
   return (
@@ -27,7 +30,7 @@ const Signup = () => {
           <View className="w-5/6">
             <Formik
               initialValues={{ email: "", password: "" }}
-              validationSchema={""}
+              validationSchema={validationSchema}
               onSubmit={handleSignup}
             >
               {({
@@ -80,6 +83,14 @@ const Signup = () => {
                 </View>
               )}
             </Formik>
+            <View className="flex flex-row justify-center items-center ">
+              <Text className="font-semibold text-white">Already a User? </Text>
+              <TouchableOpacity onPress={() => router.push("/signin")}>
+                <Text className="font-semibold text-base underline text-primary ">
+                  Sign In
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
         <View className="flex-1">
