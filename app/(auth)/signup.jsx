@@ -41,7 +41,19 @@ const Signup = () => {
             }) => (
               <View className="w-full">
                 <Text>Email</Text>
-                <TextInput onChangeText={handleChange("email")} />
+                <TextInput
+                  className="h-10 border border-white text-white rounded px-2"
+                  onChangeText={handleChange("email")}
+                  onBlur={handleBlur("email")}
+                  value={values.email}
+                  keyboardType="email-address"
+                />
+
+                {touched.email && errors.email && (
+                  <Text className="text-red-500 text-xs mb-2">
+                    {errors.email}
+                  </Text>
+                )}
               </View>
             )}
           </Formik>
