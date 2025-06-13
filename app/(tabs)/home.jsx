@@ -1,4 +1,11 @@
-import { Image, Platform, Text, View } from "react-native";
+import {
+  Image,
+  ImageBackground,
+  Platform,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "../../assets/Colors";
 import logo from "../../assets/images/dinetimelogo.png";
@@ -20,6 +27,9 @@ const home = () => {
           </View>
         </View>
       </View>
+      <ScrollView>
+        <ImageBackground></ImageBackground>
+      </ScrollView>
     </SafeAreaView>
   );
 };
