@@ -13,6 +13,7 @@ import logo from "../../assets/images/dinetimelogo.png";
 import banner from "../../assets/images/homeBanner.png";
 
 const home = () => {
+  const restaurants = restaurants;
   return (
     <SafeAreaView style={{ backgroundColor: Colors.SECONDARY }}>
       <View className="flex items-center">
