@@ -44,10 +44,10 @@ const home = () => {
           </View>
         </View>
       </View>
-      <ScrollView>
+      <ScrollView stickyHeaderIndices={[0]}>
         <ImageBackground
           resizeMode="cover"
-          className="my-4 w-full h-52 items-center justify-center"
+          className="mb-4 bg-secondary w-full h-52 items-center justify-center"
           source={banner}
         >
           <BlurView
@@ -60,19 +60,55 @@ const home = () => {
             </Text>
           </BlurView>
         </ImageBackground>
+        {restaurants.length > 0 ? (
+          <FlatList
+            data={restaurants}
+            renderItem={renderItem}
+            horizontal
+            contentContainerStyle={{ padding: 16 }}
+            showsHorizontalScrollIndicator={false}
+            scrollEnabled={true}
+          />
+        ) : (
+          <ActivityIndicator animating color={Colors.PRIMARY} className="p-5" />
+        )}
+        {restaurants.length > 0 ? (
+          <FlatList
+            data={restaurants}
+            renderItem={renderItem}
+            horizontal
+            contentContainerStyle={{ padding: 16 }}
+            showsHorizontalScrollIndicator={false}
+            scrollEnabled={true}
+          />
+        ) : (
+          <ActivityIndicator animating color={Colors.PRIMARY} className="p-5" />
+        )}
+        {restaurants.length > 0 ? (
+          <FlatList
+            data={restaurants}
+            renderItem={renderItem}
+            horizontal
+            contentContainerStyle={{ padding: 16 }}
+            showsHorizontalScrollIndicator={false}
+            scrollEnabled={true}
+          />
+        ) : (
+          <ActivityIndicator animating color={Colors.PRIMARY} className="p-5" />
+        )}
+        {restaurants.length > 0 ? (
+          <FlatList
+            data={restaurants}
+            renderItem={renderItem}
+            horizontal
+            contentContainerStyle={{ padding: 16 }}
+            showsHorizontalScrollIndicator={false}
+            scrollEnabled={true}
+          />
+        ) : (
+          <ActivityIndicator animating color={Colors.PRIMARY} className="p-5" />
+        )}
       </ScrollView>
-      {restaurants.length > 0 ? (
-        <FlatList
-          data={restaurants}
-          renderItem={renderItem}
-          horizontal
-          contentContainerStyle={{ padding: 16 }}
-          showsHorizontalScrollIndicator={false}
-          scrollEnabled={true}
-        />
-      ) : (
-        <ActivityIndicator animating color={Colors.PRIMARY} className="p-5" />
-      )}
     </SafeAreaView>
   );
 };
