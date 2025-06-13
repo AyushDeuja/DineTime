@@ -29,7 +29,7 @@ const home = () => {
           {item.name}
         </Text>
         <Text className="text-black text-sm mb-2">{item.address}</Text>
-        <View className="flex-row justify-between items-center  p-2 px-3">
+        <View className="flex-row justify-between items-center">
           <Text className="text-green-600 font-medium text-sm">
             Open: {item.opening}
           </Text>
@@ -42,7 +42,14 @@ const home = () => {
   );
 
   return (
-    <SafeAreaView style={{ backgroundColor: Colors.SECONDARY }}>
+    <SafeAreaView
+      style={[
+        { backgroundColor: Colors.SECONDARY },
+        Platform.OS == "android"
+          ? { paddingBottom: 70 }
+          : { paddingBottom: 30 },
+      ]}
+    >
       <View className="flex items-center">
         <View className="w-11/12 bg-gray-500 rounded-lg shadow-lg justify-center items-center flex flex-row p-2 mb-5">
           <View className="flex flex-row ">
@@ -73,6 +80,30 @@ const home = () => {
             </Text>
           </BlurView>
         </ImageBackground>
+
+        <View className="p-4 flex flex-row items-center">
+          <Text className="text-3xl text-white mr-2 font-semibold">
+            Special Discount %
+          </Text>
+        </View>
+        {restaurants.length > 0 ? (
+          <FlatList
+            data={restaurants}
+            renderItem={renderItem}
+            horizontal
+            contentContainerStyle={{ padding: 16 }}
+            showsHorizontalScrollIndicator={false}
+            scrollEnabled={true}
+          />
+        ) : (
+          <ActivityIndicator animating color={Colors.PRIMARY} className="p-5" />
+        )}
+
+        <View className="p-4 flex flex-row items-center">
+          <Text className="text-3xl text-primary mr-2 font-semibold">
+            Our Restaurants
+          </Text>
+        </View>
         {restaurants.length > 0 ? (
           <FlatList
             data={restaurants}
