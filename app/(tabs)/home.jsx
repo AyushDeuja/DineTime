@@ -18,20 +18,33 @@ import { restaurants } from "../../store/restaurants";
 
 const home = () => {
   const renderItem = ({ item }) => (
-    <TouchableOpacity>
+    <TouchableOpacity className="bg-gray-200 max-w-xs rounded-2xl overflow-hidden mx-4 shadow-lg ">
       <Image
         resizeMode="cover"
         source={{ uri: item.image }}
-        className="h-28 mt-2 mb-1 rounded-lg"
+        className="h-36 w-full"
       />
-      <Text>{item.name}</Text>
+      <View className="p-4">
+        <Text className="text-black text-xl font-semibold mb-1">
+          {item.name}
+        </Text>
+        <Text className="text-black text-sm mb-2">{item.address}</Text>
+        <View className="flex-row justify-between items-center  p-2 px-3">
+          <Text className="text-green-600 font-medium text-sm">
+            Open: {item.opening}
+          </Text>
+          <Text className="text-red-600 font-medium text-sm">
+            Close: {item.closing}
+          </Text>
+        </View>
+      </View>
     </TouchableOpacity>
   );
 
   return (
     <SafeAreaView style={{ backgroundColor: Colors.SECONDARY }}>
       <View className="flex items-center">
-        <View className="w-11/12 bg-secondary rounded-lg shadow-lg justify-center items-center flex flex-row p-2">
+        <View className="w-11/12 bg-gray-500 rounded-lg shadow-lg justify-center items-center flex flex-row p-2 mb-5">
           <View className="flex flex-row ">
             <Text
               className={`text-base h-10 py-[${
@@ -60,42 +73,6 @@ const home = () => {
             </Text>
           </BlurView>
         </ImageBackground>
-        {restaurants.length > 0 ? (
-          <FlatList
-            data={restaurants}
-            renderItem={renderItem}
-            horizontal
-            contentContainerStyle={{ padding: 16 }}
-            showsHorizontalScrollIndicator={false}
-            scrollEnabled={true}
-          />
-        ) : (
-          <ActivityIndicator animating color={Colors.PRIMARY} className="p-5" />
-        )}
-        {restaurants.length > 0 ? (
-          <FlatList
-            data={restaurants}
-            renderItem={renderItem}
-            horizontal
-            contentContainerStyle={{ padding: 16 }}
-            showsHorizontalScrollIndicator={false}
-            scrollEnabled={true}
-          />
-        ) : (
-          <ActivityIndicator animating color={Colors.PRIMARY} className="p-5" />
-        )}
-        {restaurants.length > 0 ? (
-          <FlatList
-            data={restaurants}
-            renderItem={renderItem}
-            horizontal
-            contentContainerStyle={{ padding: 16 }}
-            showsHorizontalScrollIndicator={false}
-            scrollEnabled={true}
-          />
-        ) : (
-          <ActivityIndicator animating color={Colors.PRIMARY} className="p-5" />
-        )}
         {restaurants.length > 0 ? (
           <FlatList
             data={restaurants}
