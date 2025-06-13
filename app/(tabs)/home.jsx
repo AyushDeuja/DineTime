@@ -6,6 +6,7 @@ import {
   Platform,
   ScrollView,
   Text,
+  TouchableOpacity,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -16,6 +17,16 @@ import banner from "../../assets/images/homeBanner.png";
 
 const home = () => {
   const restaurants = restaurants;
+  const renderItem = ({ item }) => {
+    <TouchableOpacity>
+      <Image
+        resizeMode="cover"
+        source={{ uri: item.image }}
+        className="h-28 mt-2 mb-1 rounded-lg"
+      />
+    </TouchableOpacity>;
+  };
+
   return (
     <SafeAreaView style={{ backgroundColor: Colors.SECONDARY }}>
       <View className="flex items-center">
