@@ -1,5 +1,6 @@
 import { BlurView } from "expo-blur";
 import {
+  ActivityIndicator,
   FlatList,
   Image,
   ImageBackground,
@@ -10,22 +11,22 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ActivityIndicator } from "react-native-web";
 import { Colors } from "../../assets/Colors";
 import logo from "../../assets/images/dinetimelogo.png";
 import banner from "../../assets/images/homeBanner.png";
+import { restaurants } from "../../store/restaurants";
 
 const home = () => {
-  const restaurants = restaurants;
-  const renderItem = ({ item }) => {
+  const renderItem = ({ item }) => (
     <TouchableOpacity>
       <Image
         resizeMode="cover"
         source={{ uri: item.image }}
         className="h-28 mt-2 mb-1 rounded-lg"
       />
-    </TouchableOpacity>;
-  };
+      <Text>{item.name}</Text>
+    </TouchableOpacity>
+  );
 
   return (
     <SafeAreaView style={{ backgroundColor: Colors.SECONDARY }}>
@@ -70,7 +71,7 @@ const home = () => {
           scrollEnabled={true}
         />
       ) : (
-        <ActivityIndicator animating color={Colors.PRIMARY} />
+        <ActivityIndicator animating color={Colors.PRIMARY} className="p-5" />
       )}
     </SafeAreaView>
   );
