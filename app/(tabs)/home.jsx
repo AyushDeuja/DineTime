@@ -1,3 +1,4 @@
+import { BlurView } from "expo-blur";
 import {
   Image,
   ImageBackground,
@@ -33,7 +34,17 @@ const home = () => {
           resizeMode="cover"
           className="my-4 w-full h-52 items-center justify-center"
           source={banner}
-        ></ImageBackground>
+        >
+          <BlurView
+            intensity={Platform.OS === "android" ? 50 : 25}
+            tint="dark"
+            className="shadow-lg w-full p-4"
+          >
+            <Text className="text-center text-3xl font-bold text-white">
+              Dine with your loved ones
+            </Text>
+          </BlurView>
+        </ImageBackground>
       </ScrollView>
     </SafeAreaView>
   );
