@@ -9,12 +9,13 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "../../assets/Colors";
 import logo from "../../assets/images/dinetimelogo.png";
+import banner from "../../assets/images/homeBanner.png";
 
 const home = () => {
   return (
     <SafeAreaView style={{ backgroundColor: Colors.SECONDARY }}>
       <View className="flex items-center">
-        <View className=" w-11/12 rounded-lg shadow-lg justify-center items-center flex flex-row p-2">
+        <View className="w-11/12 bg-secondary rounded-lg shadow-lg justify-center items-center flex flex-row p-2">
           <View className="flex flex-row ">
             <Text
               className={`text-base h-10 py-[${
@@ -28,7 +29,11 @@ const home = () => {
         </View>
       </View>
       <ScrollView>
-        <ImageBackground></ImageBackground>
+        <ImageBackground
+          resizeMode="cover"
+          className="my-4 w-full h-52 items-center justify-center"
+          source={banner}
+        ></ImageBackground>
       </ScrollView>
     </SafeAreaView>
   );
