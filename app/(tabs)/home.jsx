@@ -1,5 +1,6 @@
 import { BlurView } from "expo-blur";
 import {
+  FlatList,
   Image,
   ImageBackground,
   Platform,
@@ -8,6 +9,7 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { ActivityIndicator } from "react-native-web";
 import { Colors } from "../../assets/Colors";
 import logo from "../../assets/images/dinetimelogo.png";
 import banner from "../../assets/images/homeBanner.png";
@@ -47,6 +49,18 @@ const home = () => {
           </BlurView>
         </ImageBackground>
       </ScrollView>
+      {restaurants.length > 0 ? (
+        <FlatList
+          data={restaurants}
+          renderItem={renderItem}
+          horizontal
+          contentContainerStyle={{ padding: 16 }}
+          showsHorizontalScrollIndicator={false}
+          scrollEnabled={true}
+        />
+      ) : (
+        <ActivityIndicator animating color={Colors.PRIMARY} />
+      )}
     </SafeAreaView>
   );
 };
