@@ -104,18 +104,6 @@ const home = () => {
             Our Restaurants
           </Text>
         </View>
-        {restaurants.length > 0 ? (
-          <FlatList
-            data={restaurants}
-            renderItem={renderItem}
-            horizontal
-            contentContainerStyle={{ padding: 16 }}
-            showsHorizontalScrollIndicator={false}
-            scrollEnabled={true}
-          />
-        ) : (
-          <ActivityIndicator animating color={Colors.PRIMARY} className="p-5" />
-        )}
       </ScrollView>
     </SafeAreaView>
   );
