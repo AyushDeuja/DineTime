@@ -1,4 +1,5 @@
 import { BlurView } from "expo-blur";
+import { useEffect } from "react";
 import {
   ActivityIndicator,
   FlatList,
@@ -14,9 +15,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "../../assets/Colors";
 import logo from "../../assets/images/dinetimelogo.png";
 import banner from "../../assets/images/homeBanner.png";
+import uploadData from "../../config/bulkUpload";
 import { restaurants } from "../../store/restaurants";
 
 const home = () => {
+  useEffect(() => {
+    uploadData();
+  }, []);
   const renderItem = ({ item }) => (
     <TouchableOpacity className="bg-gray-200 max-w-xs rounded-2xl overflow-hidden mx-4 shadow-lg ">
       <Image
