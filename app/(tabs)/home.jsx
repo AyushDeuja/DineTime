@@ -1,4 +1,6 @@
 import { BlurView } from "expo-blur";
+import { collection, query } from "firebase/firestore";
+import { useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
@@ -14,9 +16,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "../../assets/Colors";
 import logo from "../../assets/images/dinetimelogo.png";
 import banner from "../../assets/images/homeBanner.png";
-import { restaurants } from "../../store/restaurants";
+import { db } from "../../config/firebaseConfig";
+
+// import { restaurants } from "../../store/restaurants";
 
 const Home = () => {
+  const [restaurants, setRestaurants] = useState([]);
+
   const renderItem = ({ item }) => (
     <TouchableOpacity className="bg-gray-200 max-w-xs rounded-2xl overflow-hidden mx-4 shadow-lg ">
       <Image
@@ -40,6 +46,11 @@ const Home = () => {
       </View>
     </TouchableOpacity>
   );
+
+  const getRestaurants = async () => {
+    const q = query(collection(db, "restaurants"));
+    const 
+  };
 
   return (
     <SafeAreaView
