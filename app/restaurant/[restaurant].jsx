@@ -1,10 +1,13 @@
-import { Text, View } from "react-native";
+import { useLocalSearchParams } from "expo-router";
+import { Text } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Restaurant = () => {
+  const { restaurant } = useLocalSearchParams();
   return (
-    <View>
-      <Text>[restaurant]</Text>
-    </View>
+    <SafeAreaView>
+      <Text>{restaurant}</Text>
+    </SafeAreaView>
   );
 };
 
