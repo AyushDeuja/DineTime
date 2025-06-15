@@ -1,4 +1,5 @@
 import { BlurView } from "expo-blur";
+import { useRouter } from "expo-router";
 import { collection, getDocs, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import {
@@ -22,9 +23,13 @@ import { db } from "../../config/firebaseConfig";
 
 const Home = () => {
   const [restaurants, setRestaurants] = useState([]);
+  const router = useRouter();
 
   const renderItem = ({ item }) => (
-    <TouchableOpacity className="bg-gray-200 max-w-xs rounded-2xl overflow-hidden mx-4 shadow-lg ">
+    <TouchableOpacity
+      onPress={() => router.push(`/restaurant/${item.name}`)}
+      className="bg-gray-200 max-w-xs rounded-2xl overflow-hidden mx-4 shadow-lg "
+    >
       <Image
         resizeMode="cover"
         source={{ uri: item.image }}
