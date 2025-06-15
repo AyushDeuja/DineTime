@@ -16,7 +16,7 @@ import logo from "../../assets/images/dinetimelogo.png";
 import banner from "../../assets/images/homeBanner.png";
 import { restaurants } from "../../store/restaurants";
 
-const home = () => {
+const Home = () => {
   const renderItem = ({ item }) => (
     <TouchableOpacity className="bg-gray-200 max-w-xs rounded-2xl overflow-hidden mx-4 shadow-lg ">
       <Image
@@ -121,4 +121,4 @@ const home = () => {
   );
 };
 
-export default home;
+export default Home;
