@@ -22,6 +22,7 @@ const home = () => {
   useEffect(() => {
     uploadData();
   }, []);
+
   const renderItem = ({ item }) => (
     <TouchableOpacity className="bg-gray-200 max-w-xs rounded-2xl overflow-hidden mx-4 shadow-lg ">
       <Image

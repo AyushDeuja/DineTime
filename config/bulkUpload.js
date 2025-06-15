@@ -1,20 +1,20 @@
 import { collection, doc, setDoc } from "firebase/firestore";
-import { restaurants } from "../store/restaurants";
+import { carouselImages } from "../store/restaurants";
 import { db } from "./firebaseConfig";
 
-const restaurantData = restaurants;
+const restaurantData = carouselImages;
 
-const uploadData = (async = async () => {
+const uploadData = async () => {
   try {
     for (let i = 0; i < restaurantData.length; i++) {
       const restaurant = restaurantData[i];
-      const docRef = doc(collection(db, "restaurants"), `restaurant_${i + 1}`);
+      const docRef = doc(collection(db, "carousel"), `carousel_${i + 1}`);
       await setDoc(docRef, restaurant);
     }
     console.log("Data Uploaded");
   } catch (err) {
     console.log("Error uploading data:", err);
   }
-});
+};
 
 export default uploadData;
