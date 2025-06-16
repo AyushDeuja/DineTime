@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from "expo-router";
-import { Platform, Text } from "react-native";
+import { Platform, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "../../assets/Colors";
 
@@ -14,7 +14,13 @@ const Restaurant = () => {
           : { paddingBottom: 30 },
       ]}
     >
-      <Text>{restaurant}</Text>
+      <ScrollView className="h-full">
+        <View>
+          <Text className="text-xl text-primary mr-2 font-semibold">
+            {restaurant}
+          </Text>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
