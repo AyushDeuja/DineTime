@@ -1,3 +1,4 @@
+import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams } from "expo-router";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useRef, useState } from "react";
@@ -27,7 +28,21 @@ const Restaurant = () => {
       <View
         style={{ width: windowWidth - 2 }}
         className="relative h-64 rounded-[25px]"
-      ></View>
+      >
+        <View
+          style={{
+            position: "absolute",
+            top: "50%",
+            backgroundColor: "rgba(0,0,0,0.6)",
+            borderRadius: 50,
+            padding: 5,
+            zIndex: 10,
+            right: "6%",
+          }}
+        >
+          <Ionicons name="arrow-forward" size={24} color="white" />
+        </View>
+      </View>
     );
   };
 
