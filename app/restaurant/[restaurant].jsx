@@ -11,7 +11,7 @@ const Restaurant = () => {
 
   const [restaurantData, setRestaurantData] = useState({});
   const [carouselData, setCarouselData] = useState({});
-  const [slots, setSlots] = useState({});
+  const [slotsData, setSlotsData] = useState({});
 
   const getRestaurantData = async () => {
     try {
@@ -40,6 +40,17 @@ const Restaurant = () => {
           carouselImages.push(carouselDoc.data());
         });
         setCarouselData(carouselImages);
+
+        const slotsQuery = query(
+          collection(db, "slots"),
+          where("ref_id", "==", doc.ref)
+        );
+        const slotsSnapshot = await getDocs(slotsQuery);
+        const slots = [];
+        slotsSnapshot.forEach((slotDoc) => {
+          slots.push(slotDoc.data());
+        });
+        setSlotsData(slots);
       }
     } catch (err) {}
   };
