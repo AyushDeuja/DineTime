@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from "expo-router";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Platform, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "../../assets/Colors";
@@ -64,6 +64,10 @@ const Restaurant = () => {
       console.log("Error fetching data: ", err);
     }
   };
+
+  useEffect(() => {
+    getRestaurantData;
+  }, []);
 
   return (
     <SafeAreaView
