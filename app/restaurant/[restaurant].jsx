@@ -1,7 +1,14 @@
 import { useLocalSearchParams } from "expo-router";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useRef, useState } from "react";
-import { FlatList, Platform, ScrollView, Text, View } from "react-native";
+import {
+  Dimensions,
+  FlatList,
+  Platform,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "../../assets/Colors";
 import { db } from "../../config/firebaseConfig";
@@ -9,10 +16,20 @@ import { db } from "../../config/firebaseConfig";
 const Restaurant = () => {
   const { restaurant } = useLocalSearchParams();
   const [flatListRef] = useRef(null);
+  const windowWidth = Dimensions.get("window").width;
 
   const [restaurantData, setRestaurantData] = useState({});
   const [carouselData, setCarouselData] = useState({});
   const [slotsData, setSlotsData] = useState({});
+
+  const carouselItem = ({ item }) => {
+    return (
+      <View
+        style={{ width: windowWidth - 2 }}
+        className="relative h-64 rounded-[25px]"
+      ></View>
+    );
+  };
 
   const getRestaurantData = async () => {
     try {
