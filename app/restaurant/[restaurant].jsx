@@ -15,10 +15,11 @@ const Restaurant = () => {
       ]}
     >
       <ScrollView className="h-full">
-        <View>
+        <View className="flex-1 my-2 p-2">
           <Text className="text-xl text-primary mr-2 font-semibold">
             {restaurant}
           </Text>
+          <View className="border-b border-primary" />
         </View>
       </ScrollView>
     </SafeAreaView>
