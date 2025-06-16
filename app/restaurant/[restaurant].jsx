@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from "expo-router";
-import { collection, getDocs, query } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { useState } from "react";
 import { Platform, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -10,7 +10,7 @@ const Restaurant = () => {
   const { restaurant } = useLocalSearchParams();
 
   const [restaurantData, setRestaurantData] = useState({});
-  const [carousel, setCacousel] = useState({});
+  const [carouselData, setCarouselData] = useState({});
   const [slots, setSlots] = useState({});
 
   const getRestaurantData = async () => {
@@ -29,6 +29,17 @@ const Restaurant = () => {
       for (const doc of restaurantSnapshot.docs) {
         const restaurantData = doc.data();
         setRestaurantData(restaurantData);
+
+        const carouselQuery = query(
+          collection(db, "carousel"),
+          where("res_id", "==", doc.ref)
+        );
+        const carouselSnapshot = await getDocs(carouselQuery);
+        const carouselImages = [];
+        carouselSnapshot.forEach((carouselDoc) => {
+          carouselImages.push(carouselDoc.data());
+        });
+        setCarouselData(carouselImages);
       }
     } catch (err) {}
   };
