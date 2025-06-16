@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from "expo-router";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FlatList, Platform, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "../../assets/Colors";
@@ -8,6 +8,7 @@ import { db } from "../../config/firebaseConfig";
 
 const Restaurant = () => {
   const { restaurant } = useLocalSearchParams();
+  const [flatListRef] = useRef(null);
 
   const [restaurantData, setRestaurantData] = useState({});
   const [carouselData, setCarouselData] = useState({});
@@ -87,7 +88,14 @@ const Restaurant = () => {
           <View className="border-b border-primary" />
         </View>
         <View className="h-64 max-w-[98%] mx-2 rounded-[25px]">
-          <FlatList />
+          <FlatList
+            ref={flatListRef}
+            data={carouselData[0]?.images}
+            renderItem={carouselItem}
+            horizontal
+            scrollEnabled={true}
+            style={{ borderRadius: 25 }}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
