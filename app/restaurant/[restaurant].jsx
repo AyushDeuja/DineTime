@@ -1,7 +1,7 @@
 import { useLocalSearchParams } from "expo-router";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { Platform, ScrollView, Text, View } from "react-native";
+import { FlatList, Platform, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "../../assets/Colors";
 import { db } from "../../config/firebaseConfig";
@@ -66,8 +66,9 @@ const Restaurant = () => {
   };
 
   useEffect(() => {
-    getRestaurantData;
+    getRestaurantData();
   }, []);
+  // console.log(restaurantData, carouselData, slotsData);
 
   return (
     <SafeAreaView
@@ -84,6 +85,9 @@ const Restaurant = () => {
             {restaurant}
           </Text>
           <View className="border-b border-primary" />
+        </View>
+        <View className="h-64 max-w-[98%] mx-2 rounded-[25px]">
+          <FlatList />
         </View>
       </ScrollView>
     </SafeAreaView>
