@@ -36,6 +36,10 @@ const Restaurant = () => {
         );
         const carouselSnapshot = await getDocs(carouselQuery);
         const carouselImages = [];
+        if (carouselSnapshot.empty) {
+          console.log("No matching carousel found");
+          return;
+        }
         carouselSnapshot.forEach((carouselDoc) => {
           carouselImages.push(carouselDoc.data());
         });
@@ -47,12 +51,18 @@ const Restaurant = () => {
         );
         const slotsSnapshot = await getDocs(slotsQuery);
         const slots = [];
+        if (slotsSnapshot.empty) {
+          console.log("No matching slots found");
+          return;
+        }
         slotsSnapshot.forEach((slotDoc) => {
           slots.push(slotDoc.data());
         });
         setSlotsData(slots);
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log("Error fetching data: ", err);
+    }
   };
 
   return (
