@@ -17,7 +17,7 @@ import { db } from "../../config/firebaseConfig";
 
 const Restaurant = () => {
   const { restaurant } = useLocalSearchParams();
-  const [flatListRef] = useRef(null);
+  const flatListRef = useRef(null);
   const windowWidth = Dimensions.get("window").width;
 
   const [restaurantData, setRestaurantData] = useState({});
