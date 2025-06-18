@@ -19,29 +19,40 @@ const Restaurant = () => {
   const { restaurant } = useLocalSearchParams();
   const flatListRef = useRef(null);
   const windowWidth = Dimensions.get("window").width;
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const [restaurantData, setRestaurantData] = useState({});
   const [carouselData, setCarouselData] = useState({});
   const [slotsData, setSlotsData] = useState({});
 
+  const handleNextImage = () => {
+    const carouselLength = carouselData[0]?.images.length;
+    if (currentIndex < carouselLength - 1) {
+      const nextIndex = currentIndex + 1;
+      setCurrentIndex(nextIndex);
+    }
+  };
+
   const carouselItem = ({ item }) => {
     return (
-      <View
-        style={{ width: windowWidth - 2 }}
-        className="relative h-64 rounded-[25px]"
-      >
+      <View style={{ width: windowWidth - 2 }} className="relative h-64 ">
         <View
           style={{
             position: "absolute",
             top: "50%",
-            backgroundColor: "rgba(0,0,0,0.6)",
+            backgroundColor: "rgba(0,0,0,0.1)",
             borderRadius: 50,
             padding: 5,
             zIndex: 10,
             right: "6%",
           }}
         >
-          <Ionicons name="arrow-forward" size={24} color="white" />
+          <Ionicons
+            onPress={handleNextImage}
+            name="arrow-forward"
+            size={24}
+            color="white"
+          />
         </View>
         <View>
           <Image
@@ -50,8 +61,10 @@ const Restaurant = () => {
               opacity: 0.5,
               backgroundColor: "black",
               marginRight: 20,
+              borderRadius: 25,
               marginLeft: 5,
             }}
+            className="h-64 "
           />
         </View>
       </View>
@@ -137,7 +150,8 @@ const Restaurant = () => {
             data={carouselData[0]?.images}
             renderItem={carouselItem}
             horizontal
-            scrollEnabled={true}
+            showsHorizontalScrollIndicator={false}
+            scrollEnabled={false}
             style={{ borderRadius: 25 }}
           />
         </View>
